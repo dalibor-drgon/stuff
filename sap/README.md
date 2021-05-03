@@ -24,9 +24,13 @@ Na tieto adresy flash pamate (flash = sekcia kodu) je teda treba zapisat instruk
 Dalej nas bude zaujimat inicializacia PCIx interruptov. Na to nam posluzi kapitola 12. `I/O ports` a zvlast podsekcia `Register Description`.
 Podla tabulky `12-1` je vidiet, ze ak je flag `DDxn` v registri `DDRy` nastaveny na nulu (co je defaultna hodnota), tak je brany ako vstup. Cize nemusime s tymto registrom nic menit. Tiez chceme, aby `PORTx = 0`, co je tiez defaultna hodnota, takze ani v tomto registri nie je treba nic menit.
 
-### External interrupts
+#### External interrupts
 
 Podkapitola `11.2 Register Description`. Nastavime `PCIE1` a `PCIE0` pin change interrupt enable bity na `1`. Dalej je treba povolit pozadovane `PCINTx` interrupty v `PCMSKy` registroch. Vsimnime si `EIFR` register - ten uklada interrupty flagy pre jednotlive `PCIx`. Tento flag je automaticky nastaveny na nulu po exekucii handleru, ktory implementujeme neskor.
+
+#### Global interrupts
+
+Nezabudnite povolit globalne interrupty cez instrukciu `sei`.
 
 ### Handler
 
